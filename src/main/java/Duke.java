@@ -1,5 +1,3 @@
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Duke {
@@ -9,6 +7,7 @@ public class Duke {
                 input+
                 "\n____________________________________________________________\n";
     }
+
     public static void main(String[] args) {
         List list = new List();
         Scanner in = new Scanner(System.in);
@@ -26,22 +25,21 @@ public class Duke {
             String input = in.nextLine();
             if (!input.equals("bye")) {
                 if(input.equals("list")){
-                   String[] items = list.getItems();
-                   System.out.println("____________________________________________________________");
-                   for(String item: items){
-                       if(item!=null) System.out.println(item);
-                       else break;
-                   }
-                   System.out.println("____________________________________________________________\n");
-                }else {
+                    list.queryItems();
+                } else if(input.contains("done")) {
+                    String index = input.replace("done ","");
+                    list.completeTask(Integer.parseInt(index)-1);
+                } else {
                     String line = addLines("added: " + input);
                     list.addItem(input);
                     System.out.println(line);
                 }
+
             } else {
                 break;
             }
         }
+
         System.out.println(byeMsg);
     }
 }
