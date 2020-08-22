@@ -34,7 +34,6 @@ public class Duke {
                     list.addItem(input);
                     System.out.println(line);
                 }
-
             } else {
                 break;
             }
