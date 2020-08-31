@@ -19,6 +19,7 @@ public class Task {
     public String toString(){
         return "[T][" + getStatusIcon() + "]" + description;
     }
+
     public String getDescription() {
         return "[" + getStatusIcon() + "]" + description;
     }

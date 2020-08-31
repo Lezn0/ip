@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Duke {
+
     public static void main(String[] args) {
         List list = new List();
         Scanner in = new Scanner(System.in);

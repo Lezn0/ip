@@ -9,16 +9,10 @@ public class List {
     }
 
     public void queryItems(){
-        System.out.println("____________________________________________________________\n" +
-                "Here are the tasks in your list: ");
-        int count=1;
-        for(Task item: items){
-            if(item!=null) {
-                System.out.println(count+". "+item.toString());
-                count++;
-            } else {
-                break;
-            }
+        System.out.println("____________________________________________________________");
+        System.out.println("Here are the tasks in your list: ");
+        for(int i=0; i<size; i++) {
+            System.out.println(i+1 + ". " + items[i]);
         }
         System.out.println("____________________________________________________________");
     }
@@ -27,8 +21,7 @@ public class List {
         System.out.println("____________________________________________________________");
         if(items[index]!=null && index<100) {
             items[index].markAsDone();
-            System.out.println("Nice! I've marked this task as done: ");
-            System.out.println(items[index].toString());
+            System.out.println("Nice! I've marked this task as done: \n"+items[index]);
         } else {
             System.out.println("invalid index, try again");
         }
@@ -49,6 +42,7 @@ public class List {
         size++;
         itemAddedMessage(newDeadline);
     }
+
     public void addEvent(String input){
         String[] eventInputs = input.split("/at",2);
         Event newEvent= new Event(eventInputs[0].trim(),eventInputs[1].trim());
@@ -56,16 +50,15 @@ public class List {
         size++;
         itemAddedMessage(newEvent);
     }
+
     private void itemAddedMessage(Task item){
         System.out.println("____________________________________________________________\n" +
-                "Got it. I've added this task: \n" +
-                item.toString());
+                "Got it. I've added this task: \n" + item);
         if(size>1) {
             System.out.println("Now you have " + size + " tasks in the list.");
         } else{
             System.out.println("Now you have " + size + " task in the list.");
         }
         System.out.println("____________________________________________________________");
-
     }
 }
