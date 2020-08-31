@@ -15,4 +15,11 @@ public class Task {
     public void markAsDone(){
         isDone = true;
     }
+
+    public String toString(){
+        return "[T][" + getStatusIcon() + "]" + description;
+    }
+    public String getDescription() {
+        return "[" + getStatusIcon() + "]" + description;
+    }
 }
