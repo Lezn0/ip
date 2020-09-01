@@ -10,7 +10,7 @@ public class List {
 
     public void queryItems(){
         System.out.println("____________________________________________________________");
-        System.out.println("Here are the tasks in your list: ");
+        System.out.println("Here are the tasks in your list:");
         for(int i=0; i<size; i++) {
             System.out.println(i+1 + ". " + items[i]);
         }
@@ -21,7 +21,7 @@ public class List {
         System.out.println("____________________________________________________________");
         if(items[index]!=null && index<100) {
             items[index].markAsDone();
-            System.out.println("Nice! I've marked this task as done: \n"+items[index]);
+            System.out.println("Nice! I've marked this task as done:\n"+items[index]);
         } else {
             System.out.println("invalid index, try again");
         }
@@ -53,7 +53,7 @@ public class List {
 
     private void itemAddedMessage(Task item){
         System.out.println("____________________________________________________________\n" +
-                "Got it. I've added this task: \n" + item);
+                "Got it. I've added this task:\n" + item);
         if(size>1) {
             System.out.println("Now you have " + size + " tasks in the list.");
         } else{
