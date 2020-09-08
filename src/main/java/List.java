@@ -30,52 +30,44 @@ public class List {
         printLine();
     }
 
-    public void addItem(String item){
+    public void addItem(String item) throws DukeException {
         try {
             Task newTask = new Task(item.trim());
             items[size] = newTask;
             size++;
             itemAddedMessage(newTask);
-        } catch (Exception e) {
-            printLine();
-            System.out.println("invalid input, try again");
-            printLine();
+        } catch (DukeException e) {
+            throw new DukeException(e.error);
         }
     }
 
-    public void addDeadline(String input){
+    public void addDeadline(String input) throws DukeException{
         try{
+            if(!input.contains("/by")){
+                throw new DukeException("deadline");
+            }
             String[] deadlineInputs = input.split("/by",2);
             Deadline newDeadline= new Deadline(deadlineInputs[0].trim(),deadlineInputs[1].trim());
             items[size] = newDeadline;
             size++;
             itemAddedMessage(newDeadline);
-        } catch (IndexOutOfBoundsException e) {
-            printLine();
-            System.out.println("Please input a valid deadline using /by");
-            printLine();
-        } catch (Exception e) {
-            printLine();
-            System.out.println("invalid input, try again");
-            printLine();
+        } catch (DukeException e) {
+            throw new DukeException(e.error);
         }
     }
 
-    public void addEvent(String input){
+    public void addEvent(String input) throws DukeException {
         try {
+            if(!input.contains("/at")){
+                throw new DukeException("event");
+            }
             String[] eventInputs = input.split("/at",2);
             Event newEvent= new Event(eventInputs[0].trim(),eventInputs[1].trim());
             items[size] = newEvent;
             size++;
             itemAddedMessage(newEvent);
-        } catch (IndexOutOfBoundsException e) {
-            printLine();
-            System.out.println("Please input a valid time for the event using /at");
-            printLine();
-        } catch (Exception e) {
-            printLine();
-            System.out.println("invalid input, try again");
-            printLine();
+        } catch (DukeException e) {
+            throw new DukeException(e.error);
         }
     }
 
