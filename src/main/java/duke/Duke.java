@@ -1,3 +1,7 @@
+package duke;
+
+import duke.list.List;
+
 import java.util.Scanner;
 
 public class Duke {
@@ -57,6 +61,6 @@ public class Duke {
     public static void addLines(String input){
         System.out.println("____________________________________________________________\n" +
                 input+
-                "\n____________________________________________________________\n");
+                "\n____________________________________________________________");
     }
 }

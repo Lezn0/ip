@@ -1,9 +1,13 @@
+package duke.list;
+
+import duke.DukeException;
+
 public class Task {
 
     protected String description;
     protected boolean isDone;
 
-    public Task(String description) throws DukeException{
+    public Task(String description) throws DukeException {
         if(!description.equals("")) {
             this.description = description;
             this.isDone = false;

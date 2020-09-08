@@ -1,9 +1,13 @@
+package duke.list;
+
+import duke.DukeException;
+
 public class List {
 
     private static Task[] items;
     private int size;
 
-    List(){
+    public List(){
         items = new Task[100];
         size = 0;
     }
