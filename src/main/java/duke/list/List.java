@@ -41,7 +41,7 @@ public class List {
             size++;
             itemAddedMessage(newTask);
         } catch (DukeException e) {
-            throw new DukeException(e.error);
+            throw e;
         }
     }
 
@@ -56,7 +56,7 @@ public class List {
             size++;
             itemAddedMessage(newDeadline);
         } catch (DukeException e) {
-            throw new DukeException(e.error);
+            throw e;
         }
     }
 
@@ -71,7 +71,7 @@ public class List {
             size++;
             itemAddedMessage(newEvent);
         } catch (DukeException e) {
-            throw new DukeException(e.error);
+            throw e;
         }
     }
 

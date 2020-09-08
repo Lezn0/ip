@@ -2,7 +2,7 @@ package duke;
 
 public class DukeException extends Exception{
 
-    public String error;
+    protected String error;
     //format - wrong command format
 
     public DukeException(String error){
