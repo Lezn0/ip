@@ -18,4 +18,10 @@ public class Event extends Task {
     public String toString() {
         return "[E]" + super.getDescription() + "(at: " + at + ")";
     }
+
+    @Override
+    public String toFileInput(){
+        return "E " + super.getInfo() + " " + at + "\n";
+    }
+
 }
