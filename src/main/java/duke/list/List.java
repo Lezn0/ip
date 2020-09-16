@@ -2,13 +2,15 @@ package duke.list;
 
 import duke.DukeException;
 
+import java.util.ArrayList;
+
 public class List {
 
-    private static Task[] items;
+    private static ArrayList<Task> items;
     private int size;
 
     public List(){
-        items = new Task[100];
+        items = new ArrayList<>();
         size = 0;
     }
 
@@ -16,7 +18,7 @@ public class List {
         printLine();
         System.out.println("Here are the tasks in your list:");
         for(int i=0; i<size; i++) {
-            System.out.println(i+1 + ". " + items[i]);
+            System.out.println(i+1 + ". " + items.get(i));
         }
         printLine();
     }
@@ -26,17 +28,17 @@ public class List {
         printLine();
         try{
             index=Integer.parseInt(input)-1;
-            items[index].markAsDone();
-            System.out.println("Nice! I've marked this task as done:\n"+items[index]);
+            items.get(index).markAsDone();
+            System.out.println("Nice! I've marked this task as done:\n" + items.get(index));
         } catch (Exception e){
-            System.out.println("invalid index, try again");
+            System.out.println("invalid index for item to complete, try again");
         }
         printLine();
     }
 
     public void addItem(String item) throws DukeException {
         Task newTask = new Task(item.trim());
-        items[size] = newTask;
+        items.add(newTask);
         size++;
         itemAddedMessage(newTask);
     }
@@ -47,7 +49,7 @@ public class List {
         }
         String[] deadlineInputs = input.split("/by",2);
         Deadline newDeadline= new Deadline(deadlineInputs[0].trim(),deadlineInputs[1].trim());
-        items[size] = newDeadline;
+        items.add(newDeadline);
         size++;
         itemAddedMessage(newDeadline);
     }
@@ -58,9 +60,26 @@ public class List {
         }
         String[] eventInputs = input.split("/at",2);
         Event newEvent= new Event(eventInputs[0].trim(),eventInputs[1].trim());
-        items[size] = newEvent;
+        items.add(newEvent);
         size++;
         itemAddedMessage(newEvent);
+    }
+
+    public void deleteItem(String input){
+        int index;
+        printLine();
+        try{
+            index=Integer.parseInt(input)-1;
+
+            System.out.println(
+                    "Noted. I've removed this task:\n" +
+                    items.get(index) +
+                    "\nNow you have "+ --size + " tasks in the list." );
+            items.remove(index);
+        } catch (Exception e){
+            System.out.println("invalid index for item to delete, try again");
+        }
+        printLine();
     }
 
     private void printLine(){
