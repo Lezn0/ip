@@ -35,44 +35,32 @@ public class List {
     }
 
     public void addItem(String item) throws DukeException {
-        try {
-            Task newTask = new Task(item.trim());
-            items[size] = newTask;
-            size++;
-            itemAddedMessage(newTask);
-        } catch (DukeException e) {
-            throw e;
-        }
+        Task newTask = new Task(item.trim());
+        items[size] = newTask;
+        size++;
+        itemAddedMessage(newTask);
     }
 
     public void addDeadline(String input) throws DukeException{
-        try{
-            if(!input.contains("/by")){
-                throw new DukeException("deadline");
-            }
-            String[] deadlineInputs = input.split("/by",2);
-            Deadline newDeadline= new Deadline(deadlineInputs[0].trim(),deadlineInputs[1].trim());
-            items[size] = newDeadline;
-            size++;
-            itemAddedMessage(newDeadline);
-        } catch (DukeException e) {
-            throw e;
+        if(!input.contains("/by")){
+            throw new DukeException("deadline");
         }
+        String[] deadlineInputs = input.split("/by",2);
+        Deadline newDeadline= new Deadline(deadlineInputs[0].trim(),deadlineInputs[1].trim());
+        items[size] = newDeadline;
+        size++;
+        itemAddedMessage(newDeadline);
     }
 
     public void addEvent(String input) throws DukeException {
-        try {
-            if(!input.contains("/at")){
-                throw new DukeException("event");
-            }
-            String[] eventInputs = input.split("/at",2);
-            Event newEvent= new Event(eventInputs[0].trim(),eventInputs[1].trim());
-            items[size] = newEvent;
-            size++;
-            itemAddedMessage(newEvent);
-        } catch (DukeException e) {
-            throw e;
+        if(!input.contains("/at")){
+            throw new DukeException("event");
         }
+        String[] eventInputs = input.split("/at",2);
+        Event newEvent= new Event(eventInputs[0].trim(),eventInputs[1].trim());
+        items[size] = newEvent;
+        size++;
+        itemAddedMessage(newEvent);
     }
 
     private void printLine(){
