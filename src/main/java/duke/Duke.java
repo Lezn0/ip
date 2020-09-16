@@ -47,6 +47,9 @@ public class Duke {
                 case "event":
                     LIST.addEvent(splitInput[1]);
                     break;
+                case "delete":
+                    LIST.deleteItem(splitInput[1]);
+                    break;
                 default:
                     if (splitInput.length == 2){
                         throw new DukeException("invalid");
