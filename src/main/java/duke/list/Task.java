@@ -29,7 +29,15 @@ public class Task {
         return "[T][" + getStatusIcon() + "]" + description;
     }
 
-    public String getDescription() {
+    protected String getDescription() {
         return "[" + getStatusIcon() + "]" + description;
+    }
+
+    public String toFileInput(){
+        return "T " + isDone + " " + description + "\n";
+    }
+
+    protected String getInfo(){
+        return isDone + " " + description;
     }
 }

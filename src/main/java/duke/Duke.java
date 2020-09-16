@@ -2,12 +2,15 @@ package duke;
 
 import duke.list.List;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
+
 
 public class Duke {
     private static final List LIST = new List();
     private static final Scanner IN = new Scanner(System.in);
-    public static void main(String[] args) throws DukeException {
+    public static void main(String[] args) throws DukeException, FileNotFoundException {
         String input= "";
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
@@ -20,7 +23,12 @@ public class Duke {
         runCommand(input);
     }
 
-    private static void runCommand(String input) throws DukeException {
+    private static void runCommand(String input) throws DukeException, FileNotFoundException {
+        try {
+            List.readFileContents();
+        } catch (FileNotFoundException | DukeException e) {
+            e.printStackTrace();
+        }
         while(!input.equals("bye")) {
             input = IN.nextLine();
             try {
@@ -30,6 +38,7 @@ public class Duke {
                 }
                 switch(splitInput[0]) {
                 case "bye":
+                    List.writeToFile();
                     addLines("Bye. Hope to see you again soon!");
                     break;
                 case "list":
@@ -54,6 +63,8 @@ public class Duke {
                 }
             } catch (DukeException e) {
                 e.getError(input);
+            } catch (IOException e) {
+                System.out.println(e);
             }
         }
     }

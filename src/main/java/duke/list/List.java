@@ -1,13 +1,18 @@
 package duke.list;
 
 import duke.DukeException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
 
 public class List {
 
     private static Task[] items;
-    private int size;
+    private static int size;
 
-    public List(){
+    public List() {
         items = new Task[100];
         size = 0;
     }
@@ -63,8 +68,54 @@ public class List {
         itemAddedMessage(newEvent);
     }
 
-    private void printLine(){
+    private static void printLine(){
         System.out.println("____________________________________________________________");
+    }
+
+    public static void readFileContents() throws FileNotFoundException, DukeException {
+
+        try {
+            File f = new File("data/duke.txt"); // create a File for the given file path
+            Scanner s = new Scanner(f); // create a Scanner using the File as the source
+            while (s.hasNext()) {
+                String[] splitFileInput = s.nextLine().split(" ",4);
+                    switch(splitFileInput[0]){
+                    case "T":
+                        Task newTask = new Task(splitFileInput[2].trim());
+                        newTask.isDone = Boolean.parseBoolean(splitFileInput[1]);
+                        items[size] = newTask;
+                        break;
+                    case "D":
+                        Task newDeadline = new Deadline(splitFileInput[2].trim(), splitFileInput[3]);
+                        newDeadline.isDone = Boolean.parseBoolean(splitFileInput[1]);
+                        items[size] = newDeadline;
+                        break;
+                    case "E":
+                        Task newEvent = new Event(splitFileInput[2].trim(), splitFileInput[3]);
+                        newEvent.isDone = Boolean.parseBoolean(splitFileInput[1]);
+                        items[size] = newEvent;
+                        break;
+                    default:
+                        continue;
+                    }
+                    size++;
+            }
+        } catch (FileNotFoundException e) {
+            printLine();
+            File dir = new File("data");
+            dir.mkdirs();
+            System.out.println("no file found");
+            printLine();
+        }
+    }
+
+    public static void writeToFile() throws IOException {
+        FileWriter fw = new FileWriter("data/duke.txt");
+        for(int i=0; i<size ;i++){
+            String fileInput = items[i].toFileInput();
+            fw.write(fileInput);
+        }
+        fw.close();
     }
 
     private void itemAddedMessage(Task item){

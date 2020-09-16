@@ -19,4 +19,9 @@ public class Deadline extends Task {
     public String toString() {
         return "[D]" + super.getDescription() + " (by: " + by + ")";
     }
+
+    @Override
+    public String toFileInput(){
+        return "D " + super.getInfo() + " " + by + "\n";
+    }
 }
