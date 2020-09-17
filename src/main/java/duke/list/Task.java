@@ -34,10 +34,10 @@ public class Task {
     }
 
     public String toFileInput(){
-        return "T " + isDone + " " + description + "\n";
+        return "T|" + isDone + "|" + description + "\n";
     }
 
     protected String getInfo(){
-        return isDone + " " + description;
+        return isDone + "|" + description;
     }
 }

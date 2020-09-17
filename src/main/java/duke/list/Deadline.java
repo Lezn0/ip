@@ -22,6 +22,6 @@ public class Deadline extends Task {
 
     @Override
     public String toFileInput(){
-        return "D " + super.getInfo() + " " + by + "\n";
+        return "D|" + super.getInfo() + "|" + by + "\n";
     }
 }

@@ -82,7 +82,7 @@ public class List {
             File f = new File("data/duke.txt"); // create a File for the given file path
             Scanner s = new Scanner(f); // create a Scanner using the File as the source
             while (s.hasNext()) {
-                String[] splitFileInput = s.nextLine().split(" ", 4);
+                String[] splitFileInput = s.nextLine().split("|", 4);
                 switch (splitFileInput[0]) {
                 case "T":
                     Task newTask = new Task(splitFileInput[2].trim());

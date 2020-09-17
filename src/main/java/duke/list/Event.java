@@ -21,7 +21,7 @@ public class Event extends Task {
 
     @Override
     public String toFileInput(){
-        return "E " + super.getInfo() + " " + at + "\n";
+        return "E|" + super.getInfo() + "|" + at + "\n";
     }
 
 }
