@@ -1,22 +1,26 @@
 package duke.list;
 
 import duke.DukeException;
-import java.io.File;
+import duke.Storage;
+
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
-
 import java.util.ArrayList;
+import static duke.Ui.printLine;
 
-public class List {
-
+public class TaskList {
+    private Storage storage;
     private static ArrayList<Task> items;
     private static int size;
 
-    public List(){
+    public TaskList(){
         items = new ArrayList<>();
         size = 0;
+    }
+
+    public TaskList(String filePath) throws FileNotFoundException, DukeException {
+        items = new ArrayList<>();
+        storage = new Storage(filePath);
     }
 
     public void queryItems(){
@@ -45,7 +49,7 @@ public class List {
         Task newTask = new Task(item.trim());
         items.add(newTask);
         size++;
-        appendToFile(newTask);
+        storage.appendToFile(newTask);
         itemAddedMessage(newTask);
     }
 
@@ -57,7 +61,7 @@ public class List {
         Deadline newDeadline= new Deadline(deadlineInputs[0].trim(),deadlineInputs[1].trim());
         items.add(newDeadline);
         size++;
-        appendToFile(newDeadline);
+        storage.appendToFile(newDeadline);
         itemAddedMessage(newDeadline);
     }
 
@@ -69,48 +73,14 @@ public class List {
         Event newEvent= new Event(eventInputs[0].trim(),eventInputs[1].trim());
         items.add(newEvent);
         size++;
-        appendToFile(newEvent);
+        storage.appendToFile(newEvent);
         itemAddedMessage(newEvent);
     }
 
-    private static void printLine(){
-        System.out.println("____________________________________________________________");
-    }
 
-    public static void readFileContents() throws FileNotFoundException, DukeException {
-        try {
-            File f = new File("data/duke.txt"); // create a File for the given file path
-            Scanner s = new Scanner(f); // create a Scanner using the File as the source
-            while (s.hasNext()) {
-                String[] splitFileInput = s.nextLine().split("|", 4);
-                switch (splitFileInput[0]) {
-                case "T":
-                    Task newTask = new Task(splitFileInput[2].trim());
-                    newTask.isDone = Boolean.parseBoolean(splitFileInput[1]);
-                    items.add(newTask);
-                    break;
-                case "D":
-                    Task newDeadline = new Deadline(splitFileInput[2].trim(), splitFileInput[3]);
-                    newDeadline.isDone = Boolean.parseBoolean(splitFileInput[1]);
-                    items.add(newDeadline);
-                    break;
-                case "E":
-                    Task newEvent = new Event(splitFileInput[2].trim(), splitFileInput[3]);
-                    newEvent.isDone = Boolean.parseBoolean(splitFileInput[1]);
-                    items.add(newEvent);
-                    break;
-                default:
-                    continue;
-                }
-                size++;
-            }
-        } catch (FileNotFoundException e) {
-            printLine();
-            File dir = new File("data");
-            dir.mkdirs();
-            System.out.println("no file found");
-            printLine();
-        }
+    public static void addFileContents(Task item){
+        items.add(item);
+        size++;
     }
 
     public void deleteItem(String input){
@@ -124,26 +94,11 @@ public class List {
                             items.get(index) +
                             "\nNow you have "+ --size + " tasks in the list." );
             items.remove(index);
-            writeToFile();
+            storage.writeToFile(items,size);
         } catch (Exception e){
             System.out.println("invalid index for item to delete, try again");
         }
         printLine();
-    }
-    private static void appendToFile(Task input) throws IOException {
-        FileWriter fw = new FileWriter("data/duke.txt",true);
-        String fileInput = input.toFileInput();
-        fw.write(fileInput);
-        fw.close();
-    }
-
-    public static void writeToFile() throws IOException {
-        FileWriter fw = new FileWriter("data/duke.txt");
-        for(int i=0; i<size ;i++){
-            String fileInput = items.get(i).toFileInput();
-            fw.write(fileInput);
-        }
-        fw.close();
     }
 
     private void itemAddedMessage(Task item){

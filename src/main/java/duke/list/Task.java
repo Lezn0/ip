@@ -29,6 +29,10 @@ public class Task {
         return "[T][" + getStatusIcon() + "]" + description;
     }
 
+    public void setDone(boolean done){
+        this.isDone=done;
+    }
+
     protected String getDescription() {
         return "[" + getStatusIcon() + "]" + description;
     }
