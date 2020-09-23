@@ -13,14 +13,11 @@ public class TaskList {
     private static ArrayList<Task> items;
     private static int size;
 
-    public TaskList(){
+
+    public TaskList(Storage inStorage) {
         items = new ArrayList<>();
         size = 0;
-    }
-
-    public TaskList(String filePath) throws FileNotFoundException, DukeException {
-        items = new ArrayList<>();
-        storage = new Storage(filePath);
+        storage = inStorage;
     }
 
     public void queryItems(){
@@ -45,7 +42,7 @@ public class TaskList {
         printLine();
     }
 
-    public void addItem(String item) throws DukeException, IOException {
+    public void addTask(String item) throws DukeException, IOException {
         Task newTask = new Task(item.trim());
         items.add(newTask);
         size++;

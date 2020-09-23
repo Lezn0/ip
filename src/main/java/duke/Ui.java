@@ -20,14 +20,19 @@ public class Ui {
     public static void printLine(){
         System.out.println("____________________________________________________________");
     }
+    public static void inValidCommad(){
 
+    }
+    public static void leaveMsg(){
+        addLines("Bye. Hope to see you again soon!");
+    }
     public static void getError(String input, String error){
         switch (error) {
         case "format":
             addLines("Please enter a valid action after the command, eg: " + input + " {action}");
             break;
         case "invalid":
-            addLines("Please enter a valid command");
+            addLines("Please enter a valid command, try using \"help\"");
             break;
         case "deadline":
             addLines("Please input a valid deadline using the \"deadline {task} /by {time} \" format");
@@ -38,5 +43,16 @@ public class Ui {
         case "todo":
             addLines("Please input a valid todo using the \"todo {task}\" format");
         }
+    }
+    public static void listAllCommands(){
+        printLine();
+        System.out.println("Here are all the current available commands:");
+        System.out.println("    Add a new deadline: \"deadline {task} /by {time} \" format");
+        System.out.println("    Add a new event: \"event {task} /at {time} \" format\");");
+        System.out.println("    Add a new todo: \"todo {task}\" format");
+        System.out.println("    List out all tasks: \"list\"");
+        System.out.println("    Mark out task as completed: \"done {index of task in list}\"");
+        System.out.println("    Delete task: \"delete {index of task in list}\"");
+        printLine();
     }
 }
