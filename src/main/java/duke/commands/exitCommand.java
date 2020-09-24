@@ -2,9 +2,9 @@ package duke.commands;
 
 import duke.Ui;
 
-public class exitCommand extends Command{
+public class ExitCommand extends Command{
 
-    public exitCommand(){
+    public ExitCommand(){
         Ui.leaveMsg();
     }
 

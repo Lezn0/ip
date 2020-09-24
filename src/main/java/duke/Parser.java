@@ -22,19 +22,19 @@ public class Parser {
         }
         switch(splitInput[0]) {
         case "bye":
-            return new exitCommand();
+            return new ExitCommand();
         case "list":
-            return new listCommand(list);
+            return new ListCommand(list);
         case "done":
-            return new completeCommand(splitInput[1],list);
+            return new CompleteCommand(splitInput[1],list);
         case "todo":
         case "deadline":
         case "event":
-            return new addTaskCommand(splitInput[0], splitInput[1],list);
+            return new AddTaskCommand(splitInput[0], splitInput[1],list);
         case "delete":
-            return new deleteCommand(splitInput[1], list);
+            return new DeleteCommand(splitInput[1], list);
         case "help":
-            return new helpCommand();
+            return new HelpCommand();
         default:
             throw new DukeException("invalid");
         }

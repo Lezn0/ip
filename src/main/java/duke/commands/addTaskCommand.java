@@ -5,8 +5,8 @@ import duke.list.TaskList;
 
 import java.io.IOException;
 
-public class addTaskCommand extends Command{
-    public addTaskCommand(String type, String input, TaskList list) throws IOException, DukeException {
+public class AddTaskCommand extends Command{
+    public AddTaskCommand(String type, String input, TaskList list) throws IOException, DukeException {
         switch(type){
         case "todo":
             list.addTask(input);

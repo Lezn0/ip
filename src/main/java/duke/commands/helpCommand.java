@@ -2,8 +2,8 @@ package duke.commands;
 
 import duke.Ui;
 
-public class helpCommand extends Command{
-    public helpCommand(){
+public class HelpCommand extends Command{
+    public HelpCommand(){
         Ui.listAllCommands();
     }
 }

@@ -2,8 +2,8 @@ package duke.commands;
 
 import duke.list.TaskList;
 
-public class listCommand extends Command{
-    public listCommand(TaskList list){
+public class ListCommand extends Command{
+    public ListCommand(TaskList list){
         list.queryItems();
     }
 }

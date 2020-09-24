@@ -1,10 +1,9 @@
 package duke.commands;
 
 import duke.DukeException;
-import duke.Ui;
 
-public class nullCommand extends Command{
-    public nullCommand() throws DukeException {
+public class NullCommand extends Command{
+    public NullCommand() throws DukeException {
         throw new DukeException("invalid");
     }
 }
