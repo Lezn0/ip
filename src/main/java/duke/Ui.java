@@ -26,6 +26,12 @@ public class Ui {
     public static void leaveMsg(){
         addLines("Bye. Hope to see you again soon!");
     }
+
+    /**
+     * Prints to the user what went wrong with the command they entered
+     * @param input User input
+     * @param error error occurred
+     */
     public static void getError(String input, String error){
         switch (error) {
         case "format":
@@ -44,6 +50,10 @@ public class Ui {
             addLines("Please input a valid todo using the \"todo {task}\" format");
         }
     }
+
+    /**
+     * Prints out all commands available to the program and their syntax
+     */
     public static void listAllCommands(){
         printLine();
         System.out.println("Here are all the current available commands:");
