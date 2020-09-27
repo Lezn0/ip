@@ -12,7 +12,7 @@ public class Duke {
     private Storage storage;
 
     public static void main(String[] args){
-        new Duke("data/duke.txt").run("data/duke.txt");
+        new Duke("data/duke.txt").run();
     }
 
     public Duke(String filePath) {
@@ -21,7 +21,7 @@ public class Duke {
             list = new TaskList(storage);
     }
 
-    public void run(String filePath) {
+    public void run() {
         boolean isExit = false;
         String inputCommand="";
         while (!isExit) {

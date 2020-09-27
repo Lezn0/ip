@@ -33,6 +33,8 @@ public class Parser {
             return new AddTaskCommand(splitInput[0], splitInput[1],list);
         case "delete":
             return new DeleteCommand(splitInput[1], list);
+        case "due":
+            return new DueDateCommand(splitInput[1],list);
         case "help":
             return new HelpCommand();
         case "find":

@@ -4,6 +4,7 @@ import duke.DukeException;
 
 public class Task {
 
+    public boolean isDate;
     protected String description;
     protected boolean isDone;
 
