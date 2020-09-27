@@ -25,9 +25,9 @@ public class Event extends Task {
     @Override
     public String toString() {
         if(isDate) {
-            return "[D]" + super.getDescription() + " (by: " + Date.format(DateTimeFormatter.ofPattern("MMM d yyyy")) + ")";
+            return "[E]" + super.getDescription() + " (at: " + Date.format(DateTimeFormatter.ofPattern("MMM d yyyy")) + ")";
         } else {
-            return "[D]" + super.getDescription() + " (by: " + at + ")";
+            return "[E]" + super.getDescription() + " (at: " + at + ")";
         }
 
     }
@@ -35,9 +35,9 @@ public class Event extends Task {
     @Override
     public String toFileInput(){
         if(isDate) {
-            return "D|" + super.getInfo() + "|" + Date + "\n";
+            return "E|" + super.getInfo() + "|" + Date + "\n";
         } else {
-            return "D|" + super.getInfo() + "|" + at + "\n";
+            return "E|" + super.getInfo() + "|" + at + "\n";
         }
     }
 }
