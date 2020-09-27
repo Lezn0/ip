@@ -15,7 +15,12 @@ public class TaskList {
     private static ArrayList<Task> items;
     private static int size;
 
-
+    /**
+     * Constructor for TaskList
+     * Read in stored data in duke.txt and makes a new directory for duke.txt
+     * if it does not exist
+     * @param inStorage Storage class that is linked to the file path of data
+     */
     public TaskList(Storage inStorage) {
         items = new ArrayList<>();
         size = 0;
@@ -33,6 +38,9 @@ public class TaskList {
         }
     }
 
+    /**
+     *  Prints out all items inside the Task List
+     */
     public void queryItems(){
         printLine();
         System.out.println("Here are the tasks in your list:");
@@ -42,6 +50,11 @@ public class TaskList {
         printLine();
     }
 
+    /**
+     * Marks the isDone of item with corresponding index to be true
+     * Warns user to retry if invalid index is provided
+     * @param input String input of index
+     */
     public void completeTask(String input){
         int index;
         printLine();
@@ -55,6 +68,12 @@ public class TaskList {
         printLine();
     }
 
+    /**
+     * Adds a new Task to the Task List
+     * @param item description of Task
+     * @throws DukeException thrown in Task class
+     * @throws IOException If task appending to file fails
+     */
     public void addTask(String item) throws DukeException, IOException {
         Task newTask = new Task(item.trim());
         items.add(newTask);
@@ -63,6 +82,12 @@ public class TaskList {
         itemAddedMessage(newTask);
     }
 
+    /**
+     * Adds a new deadline to the Task List
+     * @param input description with deadline
+     * @throws DukeException If /by does not exist in input
+     * @throws IOException If deadline appending to file fails
+     */
     public void addDeadline(String input) throws DukeException, IOException {
         if(!input.contains("/by")){
             throw new DukeException("deadline");
@@ -75,6 +100,12 @@ public class TaskList {
         itemAddedMessage(newDeadline);
     }
 
+    /**
+     * Adds a new event to the Task List
+     * @param input description with time for event
+     * @throws DukeException If /at does not exist in input
+     * @throws IOException If event appending to file fails
+     */
     public void addEvent(String input) throws DukeException, IOException {
         if(!input.contains("/at")){
             throw new DukeException("event");
@@ -87,12 +118,20 @@ public class TaskList {
         itemAddedMessage(newEvent);
     }
 
-
+    /**
+     * Adds item read from stored file duke.txt
+     * @param item Task read from file
+     */
     public static void addFileContents(Task item){
         items.add(item);
         size++;
     }
 
+    /**
+     * Deletes the item with corresponding index from the Task List
+     * Warns user to retry if invalid index is provided
+     * @param input String input of index
+     */
     public void deleteItem(String input){
         int index;
         printLine();
@@ -111,6 +150,11 @@ public class TaskList {
         printLine();
     }
 
+    /**
+     * Prints message to inform user that task has been added
+     * and how many items the list currently have
+     * @param item Task added
+     */
     private void itemAddedMessage(Task item){
         printLine();
         System.out.println("Got it. I've added this task:\n" + item);
@@ -121,4 +165,5 @@ public class TaskList {
         }
         printLine();
     }
+
 }

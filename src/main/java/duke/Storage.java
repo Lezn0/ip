@@ -19,6 +19,11 @@ public class Storage {
         filePath = input;
     }
 
+    /**
+     * Adds task recorded in file to the task list
+     * @throws FileNotFoundException if no file is found at directory
+     * @throws DukeException if error occurs while creating Task classes
+     */
     public void readFileContents () throws FileNotFoundException, DukeException {
         File f = new File(filePath); // create a File for the given file path
         Scanner s = new Scanner(f); // create a Scanner using the File as the source
@@ -44,6 +49,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Appends task information to the file
+     * @param input Task to be recorded
+     * @throws IOException if appending to file failed
+     */
     public void appendToFile (Task input) throws IOException {
         FileWriter fw = new FileWriter(filePath, true);
         String fileInput = input.toFileInput();
@@ -51,6 +61,12 @@ public class Storage {
         fw.close();
     }
 
+    /**
+     * Overwrites the content of the file with the items in the list
+     * @param items list of all task stored
+     * @param size number of items in the list
+     * @throws IOException if writing to file failed
+     */
     public void writeToFile (ArrayList < Task > items,int size) throws IOException {
         FileWriter fw = new FileWriter(filePath);
         for (int i = 0; i < size; i++) {
