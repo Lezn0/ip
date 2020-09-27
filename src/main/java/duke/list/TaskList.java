@@ -7,6 +7,7 @@ import duke.Ui;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import static duke.Ui.printLine;
 
@@ -14,7 +15,6 @@ public class TaskList {
     private Storage storage;
     private static ArrayList<Task> items;
     private static int size;
-
 
     public TaskList(Storage inStorage) {
         items = new ArrayList<>();
@@ -118,6 +118,18 @@ public class TaskList {
             System.out.println("Now you have " + size + " tasks in the list.");
         } else{
             System.out.println("Now you have " + size + " task in the list.");
+        }
+        printLine();
+    }
+
+    public void printTasksDueByDate(LocalDate due) {
+        printLine();
+        System.out.println("Here are the tasks that are due on "+ due +" in your list:");
+        for(int i=0; i<size; i++) {
+            Task item = items.get(i);
+            if(item.isDate) {
+                System.out.println(i + 1 + ". " + items.get(i));
+            }
         }
         printLine();
     }
