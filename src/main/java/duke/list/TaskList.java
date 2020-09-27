@@ -2,7 +2,9 @@ package duke.list;
 
 import duke.DukeException;
 import duke.Storage;
+import duke.Ui;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,6 +20,17 @@ public class TaskList {
         items = new ArrayList<>();
         size = 0;
         storage = inStorage;
+        try {
+            storage.readFileContents();
+        } catch (FileNotFoundException e) {
+            File dir = new File("data");
+            Ui.addLines("no file found");
+            if (dir.mkdirs()) {
+                Ui.addLines("Successfully made directory to store data!");
+            }
+        } catch (DukeException e){
+            e.printStackTrace();
+        }
     }
 
     public void queryItems(){

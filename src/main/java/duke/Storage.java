@@ -17,17 +17,6 @@ public class Storage {
 
     public Storage(String input){
         filePath = input;
-        try {
-            readFileContents();
-        } catch (FileNotFoundException e) {
-            File dir = new File("data");
-            Ui.addLines("no file found");
-            if (dir.mkdirs()) {
-                Ui.addLines("Successfully made directory to store data!");
-            }
-        } catch (DukeException e){
-            e.printStackTrace();
-        }
     }
 
     public void readFileContents () throws FileNotFoundException, DukeException {
