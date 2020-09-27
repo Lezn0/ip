@@ -37,6 +37,8 @@ public class Parser {
             return new DueDateCommand(splitInput[1],list);
         case "help":
             return new HelpCommand();
+        case "find":
+            return new FindCommand(splitInput[1], list);
         default:
             throw new DukeException("invalid");
         }
