@@ -121,4 +121,17 @@ public class TaskList {
         }
         printLine();
     }
+
+    public void findTask(String key){
+        printLine();
+        System.out.println("Here are the matching tasks in your list:");
+        int count=1;
+        for(int i=0; i<size; i++) {
+            Task temp = items.get(i);
+            if(temp.description.contains(key)){
+                System.out.println(count++ + ". " + items.get(i));
+            }
+        }
+        printLine();
+    }
 }
