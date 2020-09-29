@@ -64,6 +64,7 @@ public class Ui {
         System.out.println("    Mark out task as completed: \"done {index of task in list}\"");
         System.out.println("    Delete task: \"delete {index of task in list}\"");
         System.out.println("    List all task due on date: \"due {date in YYYY-MM-DD format}\"");
+        System.out.println("    Find item with key: \"find {key}\"");
         printLine();
     }
 }
