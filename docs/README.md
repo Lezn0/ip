@@ -86,7 +86,7 @@ Example of usage:
 
 ### 6. done
 
-Marks task at the index entered as completed.
+Marks task on the list at the index entered as completed.
 
 Example of usage: 
 
@@ -94,7 +94,7 @@ Example of usage:
 
 ### 7. delete
 
-Deletes the task at the index entered.
+Deletes the task on the list at the index entered.
 
 Example of usage: 
 
@@ -137,8 +137,8 @@ todo | `todo [task description]` | `todo cook`
 deadline | `deadline [task description] /by [date in string or YYYY-MM-DD]`| `deadline do homework /before tomorrow`
 event | `event [task description] /at [date in string or YYYY-MM-DD]` | `event Movie with friends /at 2020-01-10`
 list | `list` | -
-done | `done [task number]`  | `done 3`
-delete | `delete [task number]` | `delete 3`
+done | `done [index of task in list]`  | `done 3`
+delete | `delete [index of task in list]` | `delete 3`
 due | `due [date in string or YYYY-MM-DD]` | `due today`
-find | `find [keyword or string]` | `find books`
+find | `find [keyword]` | `find books`
 bye | `bye` | -
