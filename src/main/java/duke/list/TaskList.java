@@ -63,6 +63,7 @@ public class TaskList {
             index=Integer.parseInt(input)-1;
             items.get(index).markAsDone();
             System.out.println("Nice! I've marked this task as done:\n" + items.get(index));
+            storage.writeToFile(items, size);
         } catch (Exception e){
             System.out.println("invalid index for item to complete, try again");
         }

@@ -67,7 +67,7 @@ public class Storage {
      * @param size number of items in the list
      * @throws IOException if writing to file failed
      */
-    public void writeToFile (ArrayList < Task > items,int size) throws IOException {
+    public void writeToFile (ArrayList <Task> items,int size) throws IOException {
         FileWriter fw = new FileWriter(filePath);
         for (int i = 0; i < size; i++) {
             String fileInput = items.get(i).toFileInput();

@@ -2,9 +2,6 @@ package duke;
 
 import duke.commands.Command;
 import duke.list.TaskList;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 public class Duke {
 

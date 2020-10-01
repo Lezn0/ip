@@ -57,15 +57,15 @@ public class Ui {
     public static void listAllCommands(){
         printLine();
         System.out.println("Here are all the current available commands:");
-        System.out.println("    Add a new deadline: \"deadline [task description] /by [date in string or YYYY-MM-DD]\"");
-        System.out.println("    Add a new event: \"event [task description] /at [date in string or YYYY-MM-DD]\"");
-        System.out.println("    Add a new todo: \"todo [task description]\" format");
-        System.out.println("    List out all tasks: \"list\"");
-        System.out.println("    Mark out task as completed: \"done [index of task in list]\"");
-        System.out.println("    Delete task: \"delete [index of task in list]\"");
-        System.out.println("    List all task due on date: \"due [date in YYYY-MM-DD format]\"");
-        System.out.println("    Find item with key: \"find [key]\"");
-        System.out.println("    End program: \"bye\"");
+        System.out.println("    1. Add a new deadline: \"deadline [task description] /by [date in string or YYYY-MM-DD]\"");
+        System.out.println("    2. Add a new event: \"event [task description] /at [date in string or YYYY-MM-DD]\"");
+        System.out.println("    3. Add a new todo: \"todo [task description]\" format");
+        System.out.println("    4. List out all tasks: \"list\"");
+        System.out.println("    5. Mark out task as completed: \"done [index of task in list]\"");
+        System.out.println("    6. Delete task: \"delete [index of task in list]\"");
+        System.out.println("    7. List all task due on date: \"due [date in YYYY-MM-DD format]\"");
+        System.out.println("    8. Find item with key: \"find [key]\"");
+        System.out.println("    9. End program: \"bye\"");
         printLine();
     }
 }
