@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 public class Event extends Task {
 
     protected String at;
-    protected LocalDate Date;
+
     public Event(String description, String at) throws DukeException {
         super(description);
         if(!at.equals("")) {

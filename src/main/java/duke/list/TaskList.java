@@ -63,7 +63,7 @@ public class TaskList {
             index=Integer.parseInt(input)-1;
             items.get(index).markAsDone();
             System.out.println("Nice! I've marked this task as done:\n" + items.get(index));
-            storage.writeToFile(items, size);
+            storage.writeToFile(items,size);
         } catch (Exception e){
             System.out.println("invalid index for item to complete, try again");
         }
@@ -168,6 +168,10 @@ public class TaskList {
         printLine();
     }
 
+    /**
+     * Prints tasks with description that contains key
+     * @param key Keyword user is looking for
+     */
     public void findTask(String key) {
         printLine();
         System.out.println("Here are the matching tasks in your list:");
@@ -180,12 +184,17 @@ public class TaskList {
         }
     }
 
+    /**
+     * Prints out tasks with due date corresponding to the user input due date
+     * Only accepts YYYY-MM-DD format
+     * @param due User input due date
+     */
     public void printTasksDueByDate(LocalDate due) {
         printLine();
         System.out.println("Here are the tasks that are due on "+ due +" in your list:");
         for(int i=0; i<size; i++) {
             Task item = items.get(i);
-            if(item.isDate) {
+            if(item.isDate && item.Date.equals(due)) {
                 System.out.println(i + 1 + ". " + items.get(i));
             }
         }

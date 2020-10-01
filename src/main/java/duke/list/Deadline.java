@@ -7,7 +7,7 @@ import java.time.temporal.ChronoUnit;
 public class Deadline extends Task {
 
     protected String by;
-    protected LocalDate Date;
+
     public Deadline(String description, String by) throws DukeException {
         super(description);
         if(!by.equals("")) {

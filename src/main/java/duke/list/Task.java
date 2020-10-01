@@ -2,11 +2,14 @@ package duke.list;
 
 import duke.DukeException;
 
+import java.time.LocalDate;
+
 public class Task {
 
     public boolean isDate;
     protected String description;
     protected boolean isDone;
+    protected LocalDate Date;
 
     public Task(String description) throws DukeException {
         if(!description.equals("")) {
